@@ -1,0 +1,11 @@
+section{
+    max-height: 100vh;
+    height: 100vh;
+
+    .col-md-10{
+        .router-Container{
+            max-height: calc(100vh - 60px);
+            overflow-y: auto;
+        }
+    }
+}

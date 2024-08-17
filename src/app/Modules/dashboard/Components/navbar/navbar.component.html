@@ -1,0 +1,26 @@
+<section class="bg-body-secondary rounded-3">
+    <div class="row p-0">
+        <div class="col-3">
+            <div>
+                <button class="btn" type="button" (click)="openDialog()">Change Password</button>
+            </div>
+        </div>
+        <div class="col-3">
+            <div>
+                <button class="btn" type="button" (click)="logOut()">LogOut</button>
+            </div>
+        </div>
+        <div class="col-2 p-0 ms-auto">
+            <div class="d-flex align-items-center">
+                <div>
+                    <img src="../../../../../assets/images/avatar.png">
+                </div>
+                <h4 class="d-flex flex-column justify-content-center">
+                    <p class="m-0">{{userName}}</p>
+                    <p class="m-0"><small class="fs-6 text-muted">{{userRole}}</small></p>
+                </h4>
+
+            </div>
+        </div>
+    </div>
+</section>

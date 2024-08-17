@@ -1,0 +1,19 @@
+<section class="mt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let item of listData.data">
+                <div class="card" style="width: 18rem;" >
+                    <img *ngIf="item.imagePath else emptyImg"
+                        [src]="'https://upskilling-egypt.com:3006/'+item.imagePath" class="w-50 h-25">
+                    <ng-template #emptyImg>
+                        <img src="../../../../../../../assets/images/noImg.png">
+                    </ng-template>
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.recipe.name}}</h5>
+                        <button (click)="onDeleteFav(item.id)" class="btn btn-danger">Remove From Fav</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,102 @@
+<section class="mt-1">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex align-items-center sectionHeader rounded-4">
+                <div class="col-md-8">
+                    <div>
+                        <h2 class="text-white">
+                            Categories
+                        </h2>
+                        <p class="text-white">
+                            You can now add your items that any user can order it from the Application and you can edit
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-end">
+                        <img src="../../../../../../../assets/images/eating a variety of foods-amico.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="row">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h3 class="fw-bold">Categories Table Details</h3>
+                            <p>You can check all details</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-end align-items-center">
+                        <div>
+                            <button class="btn btn-success" (click)="openAddDialog()">
+                                <i class="fa-solid fa-circle-plus mx-1"></i>Add New Category
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 d-flex">
+                <div class="w-50 mx-1">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Search by Name: </mat-label>
+                        <input matInput placeholder="Placeholder" [(ngModel)]="searchKey" (keydown.enter)="onGetCategories()">
+                        <mat-icon matSuffix>search</mat-icon>
+                        <mat-hint>Please Press Enter to Search</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="mx-1 w-25">
+                    <button mat-fab color="primary" class="btn d-flex align-items-center" (click)="clearFilter()">
+                        <mat-icon>delete</mat-icon>
+                        Clear Filter
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Creation Date</th>
+                            <th scope="col">Modification Date</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="listData">
+                        <tr *ngFor="let item of listData?.data">
+                            <th scope="row">{{item.name}}</th>
+                            <td>{{item.creationDate | date: 'dd/MM/YYYY'}}</td>
+                            <td>{{item.modificationDate | date: 'dd/MM/YYYY'}}</td>
+                            <td>
+                                <button mat-icon-button [matMenuTriggerFor]="menu" class="btn">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item>
+                                        <mat-icon>visibility</mat-icon>
+                                        <span>View Details</span>
+                                    </button>
+                                    <button mat-menu-item>
+                                        <mat-icon>edit</mat-icon>
+                                        <span>Edit</span>
+                                    </button>
+                                    <button mat-menu-item (click)="openDeleteDialog(item.id)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>Delete</span>
+                                    </button>
+                                </mat-menu>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination fw-semibold fs-6">
+                    <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+                        [pageIndex]="pageIndex" [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+                        aria-label="Select page">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+<section class="container my-3 px-5 py-3" style="width: 400px;">
+    <div class="row justify-content-center p-2">
+        <div class="col-md-12 p-0  ">
+            <div class="text-center">
+                <img src="../../../../../assets/images/auth-logo.png" class="w-75" alt="">
+            </div>
+            <h6 class="fw-bold my-3 fs-4">Verify your Account</h6>
+            <small class="text-muted fs-6 my-1">Enter the code sent to your E-mail!</small>
+            <form class="my-2 rounded-5" [formGroup]="verifyForm" (ngSubmit)="onverifyForm(verifyForm)">
+                <div>
+                    <div class="input-group my-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                        <input type="email" formControlName="email" class="form-control"
+                            placeholder="Enter your E-mail">
+                    </div>
+                    <div class="input-group my-3">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <input type="text" formControlName="code" class="form-control"
+                            placeholder="Enter the code you recieved">
+                    </div>
+                </div>
+                <div class="my-4 d-flex justify-content-between">
+                    <button class="w-50 btn btn-danger mx-2" type="button" (click)="onNoClick()">
+                        No Thanks !
+                    </button>
+                    <button class="w-50 btn btn-success mx-2" [disabled]="verifyForm.status==='INVALID'">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

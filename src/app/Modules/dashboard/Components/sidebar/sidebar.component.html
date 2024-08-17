@@ -1,0 +1,17 @@
+<section class="vh-100 bg-main-color">
+    <div class="d-flex flex-column flex-shrink-0 sideContainer">
+        <div class="">
+            <img src="../../../../../assets/images/logo-no-txt.png" alt="">
+        </div>
+        <ul class="nav flex-column mb-auto mt-5">
+            <ng-container *ngFor="let item of menuLinks">
+                <div class="nav-item my-2" *ngIf="item.isActive">
+                    <a [routerLink]="item.link" routerLinkActive="nav-link-active" class="nav-link text-white" role="button">
+                        <i [class]="item.icon"></i>
+                        <span class="ms-4">{{item.text}}</span>
+                    </a>
+                </div>
+            </ng-container>
+        </ul>
+    </div>
+</section>

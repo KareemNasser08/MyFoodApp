@@ -1,0 +1,101 @@
+<section class="container">
+    <div class="row justify-content-center p-0">
+        <div class="col-md-11 p-0">
+            <h6 class="fw-bold my-1 fs-4">Register</h6>
+            <small class="text-muted fs-6 my-1">Welcome Back! Please enter your details</small>
+            <form class="my-1" [formGroup]="registerForm" (ngSubmit)="onRegisterUser(registerForm)">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="w-50 mx-auto" >
+                            <ngx-dropzone (change)="onSelect($event)" class="text-center d-flex justify-content-center rounded-5">
+                                <ngx-dropzone-label>Upload your Image!</ngx-dropzone-label>
+                                <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                                  </ngx-dropzone-image-preview>
+                            </ngx-dropzone>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Username -->
+                        <div class="input-group my-2">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <input type="text" formControlName="userName" class="form-control"
+                                placeholder="Choose your Username" maxlength="8">
+                        </div>
+                        <!-- <div *ngIf="registerForm.touched && registerForm.value.userName ===null">
+                            <small class="text-danger fw-semibold">Username is required</small>
+                        </div> -->
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Email -->
+                        <div class="input-group my-2">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-envelope"></i>
+                            </span>
+                            <input type="email" formControlName="email" class="form-control"
+                                placeholder="Enter your E-mail">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Country -->
+                        <div class="input-group my-2">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-flag"></i>
+                            </span>
+                            <input type="text" formControlName="country" class="form-control"
+                                placeholder="Enter your Country">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Phone Number -->
+                        <div class="input-group my-2">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-mobile-screen"></i>
+                            </span>
+                            <input type="text" class="form-control" formControlName="phoneNumber" placeholder="Enter your Phone Number">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Password -->
+                        <div class="input-group my-2">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input [type]="isHide?'password':'text'" class="form-control" placeholder="New Password"
+                                aria-label="password" formControlName="password">
+                            <span class="position-absolute" (click)="isHide= !isHide">
+                                <i class="fa-solid" [class]="isHide?'fa-eye-slash':'fa-eye'"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Confirm Password -->
+                        <div class="input-group my-2">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-lock"></i>
+                            </span>
+                            <input [type]="isHide?'password':'text'" class="form-control"
+                                placeholder="Confirm New Password" aria-label="password"
+                                formControlName="confirmPassword">
+                            <span class="position-absolute" (click)="isHide= !isHide">
+                                <i class="fa-solid" [class]="isHide?'fa-eye-slash':'fa-eye'"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center my-1">
+                    <a class="text-decoration-none text-success fw-semibold" routerLink="/auth/login">Login Now?</a>
+                    <a class="text-decoration-none text-success fw-semibold" (click)="openDialog()">Have a Code?</a>
+                </div>
+                <div class="my-2">
+                    <button class="w-100 btn btn-success"
+                        [disabled]="registerForm.status==='INVALID'?true:false || registerForm.value.password!==registerForm.value.confirmPassword">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

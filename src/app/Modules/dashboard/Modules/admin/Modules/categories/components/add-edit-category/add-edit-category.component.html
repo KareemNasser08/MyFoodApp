@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-between">
+  <h1 mat-dialog-title class="fw-semibold my-3">Add Category</h1>
+  
+  <button color="primary" (click)="onNoClick()" class="btn mx-1">
+    <mat-icon>cancel</mat-icon>
+  </button>
+
+</div>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label class="">Add New Category</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="d-flex justify-content-end align-items-center">
+  <!-- <button mat-button (click)="onNoClick()" class="btn mx-1">No Thanks</button> -->
+  <button mat-button [mat-dialog-close]="data.name" cdkFocusInitial class="btn mx-1">Ok</button>
+</div>

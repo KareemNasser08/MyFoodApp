@@ -1,0 +1,151 @@
+<section class="mt-1">
+    <div class="container">
+        <div class="row">
+            <div class="d-flex align-items-center sectionHeader rounded-4">
+                <div class="col-md-8">
+                    <div>
+                        <h2 class="text-white">
+                            Users List
+                        </h2>
+                        <p class="text-white">
+                            You can now add your items that any user can order it from the Application and you can Edit
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-end">
+                        <img src="../../../../../../../assets/images/eating a variety of foods-amico.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-2">
+                <div class="row">
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div>
+                            <h3 class="fw-bold">Users Table Details</h3>
+                            <p>You can check all details</p>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6 d-flex justify-content-end align-items-center">
+                        <div>
+                            <button class="btn btn-success" routerLink="add-new-recipe">
+                                <i class="fa-solid fa-circle-plus mx-1"></i>Add New Recipe
+                            </button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Search by: </mat-label>
+                            <input matInput placeholder="Placeholder" [(ngModel)]="searchKey"
+                                (keydown.up)="onGetAllUsers()">
+                            <mat-icon matSuffix>search</mat-icon>
+                            <mat-hint><small class="fw-medium">Press Enter to Search</small></mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="">
+                            <button class="btn btn-warning d-flex align-items-center" (click)="clearFilter()">
+                                Clear Filter
+                            </button>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Search BY:</mat-label>
+                            <mat-select [(ngModel)]="filterOption">
+                                <mat-option value="userName">User Name</mat-option>
+                                <mat-option value="email">E-mail</mat-option>
+                                <mat-option value="country">Country</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Role:</mat-label>
+                            <mat-select [(ngModel)]="group">
+                                <mat-option value="1">User</mat-option>
+                                <mat-option value="2">Admin</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                   -->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Creation Date</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr *ngFor="let item of listData?.data">
+                            <th scope="row">{{item.name}}</th>
+                        </tr> -->
+                        <tr *ngFor="let item of listData?.data">
+                            <td>{{item.userName}}</td>
+                            <td>
+                                <img *ngIf="item.imagePath else emptyImg"
+                                    [src]="'https://upskilling-egypt.com:3006/'+item.imagePath" class="w-25 h-25 rounded-circle">
+                                <ng-template #emptyImg>
+                                    <img src="../../../../../../../assets/images/noImg.png">
+                                </ng-template>
+                            </td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.country}}</td>
+                            <!-- <th scope="row">
+                                <ng-container *ngIf="item.category.length <=0 else data">
+                                    <span>No Category</span>
+                                </ng-container>
+                                <ng-template #data>
+                                    <ng-container *ngFor="let item of item.category; let i = index; let isLast = last">
+                                        <span>{{item.name}}</span> <span *ngIf="!isLast">,</span>
+                                    </ng-container>
+                                </ng-template>
+                            </th> -->
+                            <td>{{item.phoneNumber}}</td>
+                            <td>{{item.creationDate | date: 'dd/MM/YYYY'}}</td>
+                            <td>{{item.group.name}}</td>
+                            <td>
+                                <button mat-icon-button [matMenuTriggerFor]="menu" class="btn">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item>
+                                        <mat-icon>visibility</mat-icon>
+                                        <span>View Details</span>
+                                    </button>
+                                    <button mat-menu-item [routerLink]="['edit', item.id]">
+                                        <mat-icon>edit</mat-icon>
+                                        <span>Edit</span>
+                                    </button>
+                                    <button mat-menu-item (click)="openDeleteDialog(item.id)">
+                                        <mat-icon>delete</mat-icon>
+                                        <span>Delete</span>
+                                    </button>
+                                </mat-menu>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pagination fw-semibold fs-6">
+                    <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
+                        [pageIndex]="pageIndex" [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+                        aria-label="Select page">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
