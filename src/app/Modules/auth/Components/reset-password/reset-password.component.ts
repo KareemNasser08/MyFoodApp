@@ -5,11 +5,12 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../Services/auth.service';
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./reset-password.component.scss']
 })
-export class ChangePasswordComponent {
+
+export class ResetPasswordComponent {
   isHide:boolean = true;
   successMsg:string = '';
   

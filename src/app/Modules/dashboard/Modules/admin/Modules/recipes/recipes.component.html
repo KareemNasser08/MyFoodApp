@@ -28,16 +28,16 @@
                     </div>
                     <div class="col-md-6 d-flex justify-content-end align-items-center">
                         <div>
-                            <button class="btn btn-success" routerLink="add-new-recipe">
-                                <i class="fa-solid fa-circle-plus mx-1"></i>Add New Recipe
+                            <button mat-button class="bg-success text-white px-2" routerLink="add-new-recipe">
+                                Add New Recipe
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="row justify-content-between">
+                    <div class="col-md-5 px-1">
                         <mat-form-field appearance="fill" class="w-100">
                             <mat-label>Search by Name: </mat-label>
                             <input matInput placeholder="Placeholder" [(ngModel)]="searchKey"
@@ -46,15 +46,8 @@
                             <mat-hint><small class="fw-medium">Press Enter to Search</small></mat-hint>
                         </mat-form-field>
                     </div>
-                    <div class="col-md-2">
-                        <div class="">
-                            <button class="btn btn-warning d-flex align-items-center" (click)="clearFilter()">
-                                Clear Filter
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <mat-form-field>
+                    <div class="col-md-3 px-1">
+                        <mat-form-field class="w-100">
                             <mat-label>Tag</mat-label>
                             <mat-select [(ngModel)]="tagId" (selectionChange)="onGetRecipes()">
                                 <mat-option [value]="0">All</mat-option>
@@ -62,8 +55,8 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div class="col-md-3">
-                        <mat-form-field>
+                    <div class="col-md-3 px-1">
+                        <mat-form-field class="w-100">
                             <mat-label>Categories</mat-label>
                             <mat-select [(ngModel)]="categoryId" (selectionChange)="onGetRecipes()">
                                 <mat-option [value]="0">All</mat-option>
@@ -72,12 +65,17 @@
                             </mat-select>
                         </mat-form-field>
                     </div>
+                    <div class="col-md-1 px-2">
+                        <button mat-fab color="warn" class="d-flex align-items-center" (click)="clearFilter()">
+                            <mat-icon>backspace</mat-icon>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <table class="table table-hover">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover align-middle">
                     <thead>
-                        <tr>
+                        <tr class="fs-5">
                             <th scope="col">Name</th>
                             <th scope="col">Image</th>
                             <th scope="col">Price</th>
@@ -89,19 +87,20 @@
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table-group-divider">
                         <tr *ngFor="let item of listData?.data">
-                            <th scope="row">{{item.name}}</th>
-                            <th scope="row">
+                            <td scope="row">{{item.name}}</td>
+                            <td scope="row">
                                 <img *ngIf="item.imagePath else emptyImg"
-                                    [src]="'https://upskilling-egypt.com:3006/'+item.imagePath" class="w-50 h-25">
+                                    [src]="'https://upskilling-egypt.com:3006/'+item.imagePath"
+                                    style="width: 50px; height: 50px; border-radius: 50%;">
                                 <ng-template #emptyImg>
                                     <img src="../../../../../../../assets/images/noImg.png">
                                 </ng-template>
-                            </th>
-                            <th scope="row">{{item.price}}</th>
-                            <th scope="row">{{item.description}}</th>
-                            <th scope="row">
+                            </td>
+                            <td scope="row">{{item.price}}</td>
+                            <td scope="row">{{item.description}}</td>
+                            <td scope="row">
                                 <ng-container *ngIf="item.category.length <=0 else data">
                                     <span>No Category</span>
                                 </ng-container>
@@ -110,8 +109,8 @@
                                         <span>{{item.name}}</span> <span *ngIf="!isLast">,</span>
                                     </ng-container>
                                 </ng-template>
-                            </th>
-                            <th scope="row">{{item.tag.name}}</th>
+                            </td>
+                            <td scope="row">{{item.tag.name}}</td>
                             <td>{{item.creationDate | date: 'dd/MM/YYYY'}}</td>
                             <td>{{item.modificationDate | date: 'dd/MM/YYYY'}}</td>
                             <td>

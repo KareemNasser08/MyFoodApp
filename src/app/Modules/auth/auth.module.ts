@@ -7,7 +7,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { VerifyAccountComponent } from './Components/verify-account/verify-account.component';
 import { ForgetPasswordComponent } from './Components/forget-password/forget-password.component';
-import { ChangePasswordComponent } from './Components/change-password/change-password.component';
+import { ResetPasswordComponent } from './Components/reset-password/reset-password.component';
 import { SharedModule } from '../shared/shared.module';
 
 
@@ -18,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     RegisterComponent,
     VerifyAccountComponent,
     ForgetPasswordComponent,
-    ChangePasswordComponent
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

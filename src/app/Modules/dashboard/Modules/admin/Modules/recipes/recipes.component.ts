@@ -22,6 +22,13 @@ export class RecipesComponent {
   tagId: number = 0;
   categoryId: number = 0;
 
+  length = 50;
+  pageSize = 10;
+  pageIndex = 1;
+  pageSizeOptions = [5, 10, 25, 50, 75];
+
+  showPageSizeOptions = true;
+  pageEvent: any;
 
   constructor(
     private _CategoriesService: CategoriesService,
@@ -36,35 +43,11 @@ export class RecipesComponent {
     this.onGetAllCategories();
   }
 
-  length = 50;
-  pageSize = 10;
-  pageIndex = 1;
-  pageSizeOptions = [5, 10, 25, 50, 75];
-
-  showPageSizeOptions = true;
-  pageEvent: any;
-
-  handlePageEvent(e: any) {
-    this.pageEvent = e;
-    this.length = e.length;
-    this.pageSize = e.pageSize;
-    this.pageIndex = e.pageIndex;
-    this.onGetRecipes();
-  }
-
-  clearFilter() {
-    this.searchKey = '';
-    this.tagId = 0;
-    this.categoryId = 0;
-    this.onGetRecipes();
-  }
-
   onGetTags() {
     this._RecipesService.onGetAllTags().subscribe({
       next: (res) => {
         console.log(res);
         this.listTags = res;
-        // this.length = res.totalNumberOfRecords;
       },
       error: (err) => {
         console.log(err);
@@ -82,7 +65,6 @@ export class RecipesComponent {
       next: (res) => {
         console.log(res);
         this.listCategories = res.data;
-        // this.length = res.totalNumberOfRecords;
       },
       error: (err) => {
         console.log(err);
@@ -95,11 +77,19 @@ export class RecipesComponent {
     })
   }
 
+  clearFilter() {
+    this.searchKey = '';
+    this.tagId = 0;
+    this.categoryId = 0;
+    this.onGetRecipes();
+  }
+
+
   onGetRecipes() {
     let dataParams = 
     { 
       pageSize: this.pageSize, 
-      pageNumber: this.pageIndex, 
+      pageNumber: this.pageIndex + 1,
       name: this.searchKey, 
       categoryId: this.categoryId, 
       tagId: this.tagId 
@@ -124,6 +114,15 @@ export class RecipesComponent {
           }
         }
       )
+  }
+
+    
+  handlePageEvent(e: any) {
+    this.pageEvent = e;
+    this.length = e.length;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+    this.onGetRecipes();
   }
 
   onDeleteRecipe(id: number) {
@@ -156,6 +155,8 @@ export class RecipesComponent {
       }
     });
   }
+
+
 
   // onAddCategory(val: string) {
   //   // let obj = {

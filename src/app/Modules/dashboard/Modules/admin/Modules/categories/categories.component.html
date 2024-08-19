@@ -27,11 +27,9 @@
                         </div>
                     </div>
                     <div class="col-md-6 d-flex justify-content-end align-items-center">
-                        <div>
-                            <button class="btn btn-success" (click)="openAddDialog()">
-                                <i class="fa-solid fa-circle-plus mx-1"></i>Add New Category
-                            </button>
-                        </div>
+                        <button mat-button class="bg-success text-white px-2" (click)="openAddDialog()">
+                            <span>Add New Category</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -39,31 +37,32 @@
                 <div class="w-50 mx-1">
                     <mat-form-field appearance="fill" class="w-100">
                         <mat-label>Search by Name: </mat-label>
-                        <input matInput placeholder="Placeholder" [(ngModel)]="searchKey" (keydown.enter)="onGetCategories()">
+                        <input matInput placeholder="Placeholder" [(ngModel)]="searchKey"
+                            (keydown.enter)="onGetCategories()">
                         <mat-icon matSuffix>search</mat-icon>
                         <mat-hint>Please Press Enter to Search</mat-hint>
                     </mat-form-field>
                 </div>
-                <div class="mx-1 w-25">
-                    <button mat-fab color="primary" class="btn d-flex align-items-center" (click)="clearFilter()">
-                        <mat-icon>delete</mat-icon>
-                        Clear Filter
+                <div class="mx-1 p-2 w-25">
+                    <button mat-fab color="warn" class="d-flex align-items-center" (click)="clearFilter()">
+                        <mat-icon>backspace</mat-icon>
+                        <!-- Clear Filter -->
                     </button>
                 </div>
             </div>
-            <div class="col-md-12">
-                <table class="table table-hover">
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover align-middle">
                     <thead>
-                        <tr>
+                        <tr class="fs-5">
                             <th scope="col">Name</th>
                             <th scope="col">Creation Date</th>
                             <th scope="col">Modification Date</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
-                    <tbody *ngIf="listData">
+                    <tbody *ngIf="listData" class="table-group-divider">
                         <tr *ngFor="let item of listData?.data">
-                            <th scope="row">{{item.name}}</th>
+                            <td>{{item.name}}</td>
                             <td>{{item.creationDate | date: 'dd/MM/YYYY'}}</td>
                             <td>{{item.modificationDate | date: 'dd/MM/YYYY'}}</td>
                             <td>
@@ -90,9 +89,14 @@
                     </tbody>
                 </table>
 
-                <div class="pagination fw-semibold fs-6">
-                    <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize"
-                        [pageIndex]="pageIndex" [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+                <div class="d-flex justify-content-center">
+                    <mat-paginator class="fw-semibold fs-6"
+                        #paginator  
+                        (page)="handlePageEvent($event)" 
+                        [length]="length"
+                        [pageSize]="pageSize" 
+                        [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" 
+                        [pageIndex]="pageIndex" 
                         aria-label="Select page">
                     </mat-paginator>
                 </div>

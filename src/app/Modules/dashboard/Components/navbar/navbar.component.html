@@ -1,26 +1,85 @@
-<section class="bg-body-secondary rounded-3">
-    <div class="row p-0">
-        <div class="col-3">
-            <div>
-                <button class="btn" type="button" (click)="openDialog()">Change Password</button>
-            </div>
-        </div>
-        <div class="col-3">
-            <div>
-                <button class="btn" type="button" (click)="logOut()">LogOut</button>
-            </div>
-        </div>
-        <div class="col-2 p-0 ms-auto">
-            <div class="d-flex align-items-center">
-                <div>
-                    <img src="../../../../../assets/images/avatar.png">
-                </div>
-                <h4 class="d-flex flex-column justify-content-center">
-                    <p class="m-0">{{userName}}</p>
-                    <p class="m-0"><small class="fs-6 text-muted">{{userRole}}</small></p>
-                </h4>
+<!-- <section class="bg-body-secondary rounded-3">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-medium text-success">Upskilling Food App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHome"
+                aria-controls="navbarHome" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarHome">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle fw-semibold" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <span class="">
+                                <img src="../../../../../assets/images/avatar.png">
+                            </span>
+                            <span class="mx-1 fs-5">{{userName}}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" style="min-width: 15rem;">
+                            <li class="my-2">
+                                <a class="dropdown-item">
+                                    <i class="fa-solid fa-pen-to-square me-3"></i>
+                                    Update My Profile
+                                </a>
+                            </li>
+                            <li class="my-2">
+                                <a class="dropdown-item" (click)="openDialog()">
+                                    <i class="fa-solid fa-key me-3"></i>
+                                    Change Password
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="my-2">
+                                <a class="dropdown-item" (click)="logOut()">
+                                    <i class="fa-solid fa-right-from-bracket me-3"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
 
             </div>
         </div>
+    </nav>
+</section> -->
+
+<mat-toolbar class="d-flex justify-content-between">
+    <div>
+        <a class="navbar-brand fw-medium text-success">Upskilling Food App</a>
     </div>
-</section>
+    <div>
+        <div [matMenuTriggerFor]="menu" class="d-flex align-items-center">
+            <span class="">
+                <img src="../../../../../assets/images/avatar.png">
+            </span>
+            <button mat-button>
+                <span class="mx-1 fs-5">{{userName}}</span>
+            </button>
+            <span role="button">
+                <mat-icon>arrow_drop_down</mat-icon>
+            </span>
+        </div>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <i class="fa-solid fa-pen-to-square me-3"></i>
+                Update My Profile
+                <!-- Update My Profile -->
+            </button>
+            <button mat-menu-item  (click)="openDialog()">
+                <i class="fa-solid fa-key me-3"></i>
+                Change Password
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item  (click)="logOut()">
+                <i class="fa-solid fa-right-from-bracket me-3"></i>
+                Logout
+            </button>
+        </mat-menu>
+    </div>
+</mat-toolbar>

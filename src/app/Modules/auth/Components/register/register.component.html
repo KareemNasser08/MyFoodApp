@@ -1,13 +1,13 @@
 <section class="container">
-    <div class="row justify-content-center p-0">
-        <div class="col-md-11 p-0">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
             <h6 class="fw-bold my-1 fs-4">Register</h6>
             <small class="text-muted fs-6 my-1">Welcome Back! Please enter your details</small>
             <form class="my-1" [formGroup]="registerForm" (ngSubmit)="onRegisterUser(registerForm)">
-                <div class="row">
+                <div class="row p-0">
                     <div class="col-md-12">
                         <div class="w-50 mx-auto" >
-                            <ngx-dropzone (change)="onSelect($event)" class="text-center d-flex justify-content-center rounded-5">
+                            <ngx-dropzone (change)="onSelect($event)" class="text-center d-flex justify-content-center rounded-circle">
                                 <ngx-dropzone-label>Upload your Image!</ngx-dropzone-label>
                                 <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
                                   </ngx-dropzone-image-preview>
@@ -64,7 +64,7 @@
                             </span>
                             <input [type]="isHide?'password':'text'" class="form-control" placeholder="New Password"
                                 aria-label="password" formControlName="password">
-                            <span class="position-absolute" (click)="isHide= !isHide">
+                            <span class="input-group-text" role="button" (click)="isHide= !isHide">
                                 <i class="fa-solid" [class]="isHide?'fa-eye-slash':'fa-eye'"></i>
                             </span>
                         </div>
@@ -78,18 +78,17 @@
                             <input [type]="isHide?'password':'text'" class="form-control"
                                 placeholder="Confirm New Password" aria-label="password"
                                 formControlName="confirmPassword">
-                            <span class="position-absolute" (click)="isHide= !isHide">
+                            <span class="input-group-text" role="button" (click)="isHide= !isHide">
                                 <i class="fa-solid" [class]="isHide?'fa-eye-slash':'fa-eye'"></i>
                             </span>
                         </div>
                     </div>
                 </div>
-
                 <div class="d-flex justify-content-between align-items-center my-1">
                     <a class="text-decoration-none text-success fw-semibold" routerLink="/auth/login">Login Now?</a>
-                    <a class="text-decoration-none text-success fw-semibold" (click)="openDialog()">Have a Code?</a>
+                    <a class="text-decoration-none text-success fw-semibold" role="button" (click)="openDialog()">Have a Code?</a>
                 </div>
-                <div class="my-2">
+                <div class="mt-4 mb-1 text-center">
                     <button class="w-100 btn btn-success"
                         [disabled]="registerForm.status==='INVALID'?true:false || registerForm.value.password!==registerForm.value.confirmPassword">
                         Submit

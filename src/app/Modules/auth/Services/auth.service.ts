@@ -13,6 +13,12 @@ import { FormGroup } from '@angular/forms';
 })
 export class AuthService {
 
+  constructor(private _HttpClient: HttpClient) { 
+    // this.getProfile();
+    this.getRole();
+  }
+
+  
   getProfile() {
     const encodedToken: any = localStorage.getItem('userToken');
     const decodedToken: any = jwtDecode(encodedToken);
@@ -28,11 +34,6 @@ export class AuthService {
       this.role = localStorage.getItem('role');
     }
     return this.role;
-  }
-
-  constructor(private _HttpClient: HttpClient) { 
-    // this.getProfile();
-    this.getRole();
   }
 
   onLogin(data: iLogin): Observable<any> {
@@ -58,4 +59,5 @@ export class AuthService {
   onChangePassword (data: FormGroup): Observable<any>{
     return this._HttpClient.put('Users/ChangePassword', data);
   }
+
 }

@@ -22,7 +22,7 @@ export class ChangePasswordComponent {
 
 
   constructor(
-    public dialogRef: MatDialogRef<ChangePasswordComponent>,
+    private dialogRef: MatDialogRef<ChangePasswordComponent>,
     private _AuthService: AuthService,
     private toastr: ToastrService,
     private _Router:Router

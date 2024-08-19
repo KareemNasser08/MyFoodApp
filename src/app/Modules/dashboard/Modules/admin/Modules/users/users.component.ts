@@ -33,9 +33,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.onGetAllUsers();
   }
-
-
-
+  
   length = 50;
   pageSize = 10;
   pageIndex = 0;
@@ -63,7 +61,6 @@ export class UsersComponent implements OnInit {
       pageSize: this.pageSize,
       pageNumber: this.pageIndex,
       userName: this.searchKey,
-
     }
 
     this._UsersService.getAllUsers(dataQuery).subscribe({

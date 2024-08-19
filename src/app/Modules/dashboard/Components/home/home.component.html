@@ -1,17 +1,31 @@
-<section class="mt-1 rounded-4">
+<section class="mt-1 rounded-4 overflow-y-auto">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-center welcomeBanner mx-1">
             <div class="col-md-8">
                 <div>
                     <h2 class="text-white">Welcome <span class="text-white-50">
-                        {{userName}} <span class="fs-6">({{userEmail}})</span></span></h2>
-                    <p class="text-white">This is a welcoming screen for the entry of the application , you can now see the options</p>
+                            {{userName}} <span class="fs-6">({{userEmail}})</span></span></h2>
+                    <p class="text-white">This is a welcoming screen for the entry of the application , you can now see
+                        the options</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div>
-                    <img src="../../../../../assets/images/eating vegan food-rafiki.png" alt="">
+                <div class="text-end me-2">
+                    <img src="../../../../../assets/images/eating vegan food-rafiki.png" class="w-50 h-50" alt="">
                 </div>
+           </div>
+        </div>
+
+        <div class="row align-items-center justify-content-between secondBanner mx-1">
+            <div class="col-md-7">
+                <h3>Fill the <span class="second-color">Recipes</span> !</h3>
+                <p>you can now fill the meals easily using the table and form , click here and sill it with the table !</p>    
+            </div>
+            <div class="col-md-5 text-center">
+                <button class="w-50 btn btn-success rounded-3 fs-4">
+                    Fill Recipes
+                    <i class="fa-solid fa-arrow-right mx-2"></i>
+                </button>
             </div>
         </div>
     </div>

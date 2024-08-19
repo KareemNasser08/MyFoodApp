@@ -12,18 +12,13 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   isHide: boolean = true;
+  
   loginForm = new FormGroup(
     {
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required])
     }
   );
-  constructor(
-    private _AuthService: AuthService,
-    private toastr: ToastrService,
-    private _Router:Router
-  ) { }
-
 
   onLogin(data: FormGroup) {
     this._AuthService.onLogin(data.value).subscribe({
@@ -44,4 +39,9 @@ export class LoginComponent {
     })
   }
 
+  constructor(
+    private _AuthService: AuthService,
+    private toastr: ToastrService,
+    private _Router:Router
+  ) { }
 }

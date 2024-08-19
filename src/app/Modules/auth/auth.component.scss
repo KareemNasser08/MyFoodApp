@@ -1,9 +1,29 @@
-.auth-section{
-    background-image: url(../../../assets/images/auth-background.png);
+.auth-section {
+    height: 100vh;
+    max-height: 100vh;
+    background-image: url(../../../assets/images/bgauth001.png);
     background-position: center center;
     background-size: cover;
 
-    .formLayout{
-        max-height: 100vh;
+    .container {
+        .row {
+            height: inherit;
+
+            .col-md-7 {
+                max-height: inherit;
+                .content-container {
+                    min-height: 400px;
+                    max-height: 100vh;
+                    min-width: 300px;
+
+                    .img-Container {
+                        img {
+                            width: 360px;
+                            height: 104px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

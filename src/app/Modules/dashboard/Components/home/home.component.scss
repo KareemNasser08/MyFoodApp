@@ -1,6 +1,19 @@
-section{
-    background-image: url(../../../../../assets/images/Untitled.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+section {
+    // max-height: 100vh;
+    .welcomeBanner {
+        background-image: url(../../../../../assets/images/Untitled.png);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 15px;
+        margin: 10px 0;
+    }
+
+    .secondBanner{
+        padding: 25px 15px;
+        border-radius: 15px;
+
+        background-color: #F0FFEF;
+
+    }
 }

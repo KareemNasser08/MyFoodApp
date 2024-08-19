@@ -39,7 +39,7 @@ export class ForgetPasswordComponent {
       complete:()=>{
         console.log('Completed Req!');
         this.toastr.success(this.successMsg,'Success!');
-        this._Router.navigate(['/auth/change-password']);
+        this._Router.navigate(['/auth/reset-password']);
       },
     })
   }

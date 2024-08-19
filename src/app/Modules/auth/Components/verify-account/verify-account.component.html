@@ -1,12 +1,12 @@
-<section class="container my-3 px-5 py-3" style="width: 400px;">
+<section class="container my-3 px-5 py-3" style="width: 450px;">
+    <div class="img-Container text-center">
+        <img src="../../../assets/images/foodrecipe001.png" class="w-100">
+    </div>
     <div class="row justify-content-center p-2">
-        <div class="col-md-12 p-0  ">
-            <div class="text-center">
-                <img src="../../../../../assets/images/auth-logo.png" class="w-75" alt="">
-            </div>
+        <div class="col-md-12 p-0">
             <h6 class="fw-bold my-3 fs-4">Verify your Account</h6>
             <small class="text-muted fs-6 my-1">Enter the code sent to your E-mail!</small>
-            <form class="my-2 rounded-5" [formGroup]="verifyForm" (ngSubmit)="onverifyForm(verifyForm)">
+            <form class="my-2" [formGroup]="verifyForm" (ngSubmit)="onverifyForm(verifyForm)">
                 <div>
                     <div class="input-group my-3">
                         <span class="input-group-text">

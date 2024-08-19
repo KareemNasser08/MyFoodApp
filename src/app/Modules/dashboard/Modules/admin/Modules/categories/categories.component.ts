@@ -48,7 +48,7 @@ export class CategoriesComponent implements OnInit {
 
   onGetCategories() {
     this._CategoriesService.
-      onGetAllCategories({ pageSize: this.pageSize, pageNumber: this.pageIndex, name: this.searchKey })
+      onGetAllCategories({ pageSize: this.pageSize, pageNumber: this.pageIndex + 1, name: this.searchKey })
       .subscribe(
         {
           next: (res) => {
@@ -116,7 +116,7 @@ export class CategoriesComponent implements OnInit {
   }
 
 
-  onDeleteCategory(id: number){
+  onDeleteCategory(id: number) {
     this._CategoriesService.onDeleteCateogry(id).subscribe({
       next: (res) => {
         console.log(res);
